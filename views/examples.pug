@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h3 LINDEN LANE
+
+		each file in linden
+			img.example-image(src='public/images/Linden/' + file)
+
+		br
+		h3 TUSCANY COURT
+
+		each file in tuscany
+			img.example-image(src='public/images/tuscany/' + file)
+
+		br
+		h3 GOLVIEW ROAD
+
+		each file in golfview
+			img.example-image(src='public/images/golfview/' + file)
+
+		br
+		h3 FAIRHOPE AVE
+
+		each file in fairhope
+			img.example-image(src='public/images/fairhope/' + file)
+
+
+
