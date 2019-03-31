@@ -9,6 +9,7 @@ const serverless = require('serverless-http');
 const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
+const expressStatusMonitor = require('express-status-monitor');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
 // const MongoStore = require('connect-mongo')(session);
