@@ -5,7 +5,7 @@ const express = require('express');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const serverless = require('serverless-http');
+// const serverless = require('serverless-http');
 const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
@@ -136,10 +136,10 @@ if (process.env.NODE_ENV === 'development') {
 /**
  * Start Express server.
  */
-// app.listen(app.get('port'), () => {
-//   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
-//   console.log('  Press CTRL-C to stop\n');
-// });
+app.listen(app.get('port'), () => {
+  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('  Press CTRL-C to stop\n');
+});
 
 module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
