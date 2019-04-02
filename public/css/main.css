@@ -345,29 +345,6 @@ h6, .h6 {
   font-weight: 300;
   line-height: 1.2; }
 
-.home-image {
-  padding: .5%;
-  float: left;
-  height: 230px;
-  width: 340px;
-  display: inline-block;
-  margin: auto;
-}
-
-.home-div {
-  height: 1000px;
-  width: 1200px;
-  
-  float: left;
-  vertical-align: middle;
-  left: 25%;
-}
-
-.example-image {
-  height: 222px;
-  width: 333px;
-}
-
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -12905,6 +12882,3 @@ textarea {
   color: #000 !important; }
   .btn-snapchat:hover, .btn-snapchat:active {
     background-color: #f1ef00; }
-
-
-
