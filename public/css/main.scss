@@ -79,6 +79,25 @@ textarea {
   right: 0;
 }
 
+.example-image {
+  height: 246px;
+  width: 366px;
+  padding: 3px;
+}
+
+.home-image {
+  height: 250px;
+  width: 370px;
+  padding: 3px;
+  float: left;
+}
+
+.example-hr {
+  margin: 3px;
+  padding: 2px;
+  display: inline-block;
+}
+
 /*
 * Solves Bootstrap 4 issue
 * https://github.com/twbs/bootstrap/issues/25654
