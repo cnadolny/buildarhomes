@@ -2,28 +2,40 @@ extends layout
 
 block content
 	.pb-2.mt-2.mb-4.border-bottom
-		h3 LINDEN LANE
+		block content
+			hr
+			h3.example-hr LINDEN LANE
+			hr
 
-		each file in linden
-			img.example-image(src='public/images/Linden/' + file)
-
-		br
-		h3 TUSCANY COURT
-
-		each file in tuscany
-			img.example-image(src='public/images/tuscany/' + file)
+			each file in linden
+				img.example-image(src='public/images/Linden/' + file)
 
 		br
-		h3 GOLVIEW ROAD
+		block content
+			hr
+			h3.example-hr TUSCANY COURT
+			hr
 
-		each file in golfview
-			img.example-image(src='public/images/golfview/' + file)
+			each file in tuscany
+				img.example-image(src='public/images/tuscany/' + file)
 
 		br
-		h3 FAIRHOPE AVE
+		block content
+			hr
+			h3.example-hr GOLVIEW ROAD
+			hr
 
-		each file in fairhope
-			img.example-image(src='public/images/fairhope/' + file)
+			each file in golfview
+				img.example-image(src='public/images/golfview/' + file)
+
+		br
+		block content
+			hr
+			h3.example-hr FAIRHOPE AVE
+			hr
+
+			each file in fairhope
+				img.example-image(src='public/images/fairhope/' + file)
 
 
 
