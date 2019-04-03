@@ -31,11 +31,22 @@ block content
 		br
 		block content
 			hr
+			h3.example-hr QUEENS LANE
+			hr
+
+			each file in queens
+				img.example-image(src='public/images/queens/' + file)
+
+		br
+		block content
+			hr
 			h3.example-hr FAIRHOPE AVE
 			hr
 
 			each file in fairhope
 				img.example-image(src='public/images/fairhope/' + file)
+
+		
 
 
 
