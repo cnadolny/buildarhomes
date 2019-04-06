@@ -102,7 +102,7 @@ app.use("/public", express.static(path.join(__dirname, 'public')));
  */
 app.get('/', homeController.index);
 app.get('/contact', contactController.getContact);
-app.get('/examples', examplesController.index);
+app.get('/gallery', examplesController.index);
 app.post('/contact', contactController.postContact);
 
 /**
