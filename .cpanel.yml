@@ -1,4 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/public/
+    - export DEPLOYPATH=/home/builvmtg/public_html
+    - /bin/cp -R /home/builvmtg/repositories/buildarhomes/public/* $DEPLOYPATH
