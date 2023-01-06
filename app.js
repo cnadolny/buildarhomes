@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 // const serverless = require('serverless-http');
 const logger = require('morgan');
 const errorHandler = require('errorhandler');
-const expressStatusMonitor = require('express-status-monitor');
+// const expressStatusMonitor = require('express-status-monitor');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
 // const MongoStore = require('connect-mongo')(session);
@@ -52,7 +52,7 @@ const app = express();
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(expressStatusMonitor());
+// app.use(expressStatusMonitor());
 app.use(compression());
 const sassOptions = {
   src: path.join(__dirname, 'public'),
