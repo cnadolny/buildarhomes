@@ -7,7 +7,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 // const serverless = require('serverless-http');
 const logger = require('morgan');
-const chalk = require('chalk');
 const errorHandler = require('errorhandler');
 const expressStatusMonitor = require('express-status-monitor');
 const lusca = require('lusca');
@@ -25,7 +24,7 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env.example' });
+require('dotenv').config({path:'.env.example'});
 
 /**
  * Controllers (route handlers).
@@ -122,7 +121,7 @@ if (process.env.NODE_ENV === 'development') {
  * Start Express server.
  */
 app.listen(app.get('port'), () => {
-  console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('%s App is running at http://localhost:%d in %s mode', app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
 
