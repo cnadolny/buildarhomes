@@ -52,8 +52,8 @@ exports.postContact = (req, res) => {
     }
   });
   const mailOptions = {
-    to: process.env.EMAIL,
-    from: process.env.EMAIL,
+    to: `"AR Builders" <${process.env.EMAIL}>`,
+    from: `"AR Builders" <${process.env.EMAIL}>`,
     subject: 'Contact Form',
     text: req.body.message,
     replyTo: `${fromName} <${fromEmail}>`
