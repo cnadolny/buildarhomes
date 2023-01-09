@@ -41,18 +41,22 @@ exports.postContact = (req, res) => {
     fromEmail = req.user.email;
   }
 
-  let transporter = nodemailer.createTransport({
-    service: 'SendGrid',
+  require('dotenv').config();
+  var transporter = nodemailer.createTransport({
+    host: 'mail.privateemail.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: process.env.SENDGRID_USER,
-      pass: process.env.SENDGRID_PASSWORD
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
     }
   });
   const mailOptions = {
-    to: 'art.nadolny@buildarhomes.com',
-    from: `${fromName} <${fromEmail}>`,
+    to: process.env.EMAIL,
+    from: process.env.EMAIL,
     subject: 'Contact Form',
-    text: req.body.message
+    text: req.body.message,
+    replyTo: `${fromName} <${fromEmail}>`
   };
 
   return transporter.sendMail(mailOptions)
@@ -61,23 +65,7 @@ exports.postContact = (req, res) => {
       res.redirect('/contact');
     })
     .catch((err) => {
-      if (err.message === 'self signed certificate in certificate chain') {
-        console.log('WARNING: Self signed certificate in certificate chain. Retrying with the self signed certificate. Use a valid certificate if in production.');
-        transporter = nodemailer.createTransport({
-          service: 'SendGrid',
-          auth: {
-            user: process.env.SENDGRID_USER,
-            pass: process.env.SENDGRID_PASSWORD
-          },
-          tls: {
-            rejectUnauthorized: false
-          }
-        });
-        return transporter.sendMail(mailOptions);
-      }
-      console.log('ERROR: Could not send contact email after security downgrade.\n', err);
-      req.flash('errors', { msg: 'Error sending the message. Please try again shortly.' });
-      return false;
+      console.log(err);
     })
     .then((result) => {
       if (result) {
