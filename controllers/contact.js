@@ -20,6 +20,13 @@ exports.getContact = (req, res) => {
 exports.postContact = (req, res) => {
   let fromName;
   let fromEmail;
+  email_body = 
+  `
+  Name: ${req.body.name}
+  Email: ${req.body.email}
+  Phone Number: ${req.body.phonenumber}
+  Message: ${req.body.message}
+  `
   if (!req.user) {
     req.assert('name', 'Name cannot be blank').notEmpty();
     req.assert('email', 'Email is not valid').isEmail();
@@ -55,7 +62,7 @@ exports.postContact = (req, res) => {
     to: `"AR Builders" <${process.env.EMAIL}>`,
     from: `"AR Builders" <${process.env.EMAIL}>`,
     subject: 'Contact Form',
-    text: req.body.message,
+    text: email_body,
     replyTo: `${fromName} <${fromEmail}>`
   };
 
