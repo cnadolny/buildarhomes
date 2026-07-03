@@ -17,7 +17,6 @@ const path = require('path');
 // const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
 const multer = require('multer');
-const { compileCss } = require('./helper.js');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
@@ -54,14 +53,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 // app.use(expressStatusMonitor());
 app.use(compression());
-const sassOptions = {
-  src: path.join(__dirname, 'public/css'),
-  dest: path.join(__dirname, 'public/css')
-};
 try {
-  compileCss(sassOptions);
+  const { compileCss } = require('./helper.js');
+  compileCss({ src: path.join(__dirname, 'public/css'), dest: path.join(__dirname, 'public/css') });
 } catch (e) {
-  console.error('CSS compilation failed (serving existing CSS):', e.message);
+  console.error('CSS compilation skipped:', e.message);
 }
 app.use(logger('dev'));
 app.use(bodyParser.json());
