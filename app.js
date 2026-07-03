@@ -24,7 +24,7 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-require('dotenv').config({path:'.env.example'});
+require('dotenv').config();
 
 /**
  * Controllers (route handlers).
@@ -55,10 +55,14 @@ app.set('view engine', 'pug');
 // app.use(expressStatusMonitor());
 app.use(compression());
 const sassOptions = {
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public')
+  src: path.join(__dirname, 'public/css'),
+  dest: path.join(__dirname, 'public/css')
 };
-compileCss(sassOptions);
+try {
+  compileCss(sassOptions);
+} catch (e) {
+  console.error('CSS compilation failed (serving existing CSS):', e.message);
+}
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -104,6 +108,13 @@ app.get('/', homeController.index);
 app.get('/contact', contactController.getContact);
 app.get('/gallery', examplesController.index);
 app.post('/contact', contactController.postContact);
+
+/**
+ * 404 Handler.
+ */
+app.use((req, res) => {
+  res.status(404).send('Page not found');
+});
 
 /**
  * Error Handler.

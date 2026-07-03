@@ -20,7 +20,7 @@ exports.getContact = (req, res) => {
 exports.postContact = (req, res) => {
   let fromName;
   let fromEmail;
-  email_body = 
+  const email_body =
   `
   Name: ${req.body.name}
   Email: ${req.body.email}
@@ -69,16 +69,7 @@ exports.postContact = (req, res) => {
   return transporter.sendMail(mailOptions)
     .then(() => {
       req.flash('success', { msg: 'Email has been sent successfully!' });
-      res.redirect('/contact');
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .then((result) => {
-      if (result) {
-        req.flash('success', { msg: 'Email has been sent successfully!' });
-        return res.redirect('/contact');
-      }
+      return res.redirect('/contact');
     })
     .catch((err) => {
       console.log('ERROR: Could not send contact email.\n', err);

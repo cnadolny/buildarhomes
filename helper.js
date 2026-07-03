@@ -11,7 +11,7 @@ const compileCss = ({src, dest, ext=[".sass", ".scss"]}) => {
         const baseName = path.basename(file.name, path.extname(file.name));
         const cssName = baseName + '.css';
         const destFilePath = path.join(dest, cssName);
-        const result = sass.compile(srcFilePath);
+        const result = sass.renderSync({ file: srcFilePath });
         writeFileSync(destFilePath, result.css, 'utf-8');
     }
 
