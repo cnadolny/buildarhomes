@@ -66,7 +66,7 @@ app.use(expressValidator());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: "test",// process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'dev-secret',
   cookie: { maxAge: 1209600000 } // two weeks in milliseconds
   // store: new MongoStore({
   //   url: process.env.MONGODB_URI,
@@ -128,10 +128,15 @@ if (process.env.NODE_ENV === 'development') {
 /**
  * Start Express server.
  */
-app.listen(app.get('port'), () => {
-  console.log('%s App is running at http://localhost:%d in %s mode', app.get('port'), app.get('env'));
-  console.log('  Press CTRL-C to stop\n');
-});
+if (typeof PhusionPassenger !== 'undefined') {
+  // Under Passenger (cPanel/Apache) — Passenger drives the server via Unix socket
+  PhusionPassenger.configure({ autoInstall: false });
+} else {
+  const port = app.get('port');
+  app.listen(port, () => {
+    console.log('App is running at http://localhost:' + port);
+  });
+}
 
 module.exports = app;
 // module.exports.handler = serverless(app);
