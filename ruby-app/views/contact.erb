@@ -1,0 +1,48 @@
+<div class="pb-2 mt-2 mb-4 border-bottom">
+  <h3>Contact Us</h3>
+  <hr>
+  <p>
+    AR Builders, Inc<br>
+    (847) 708 - 5374
+  </p>
+</div>
+
+<form method="POST" action="/contact">
+  <input type="hidden" name="_csrf" value="<%= csrf_token %>">
+
+  <div class="form-group row mb-3">
+    <label class="col-md-2 col-form-label fw-bold" for="name">Name</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" name="name" id="name" autocomplete="name" autofocus>
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-md-2 col-form-label fw-bold" for="email">Email</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" name="email" id="email" autocomplete="email">
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-md-2 col-form-label fw-bold" for="phonenumber">Phone Number</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" name="phonenumber" id="phonenumber">
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-md-2 col-form-label fw-bold" for="message">Project Description</label>
+    <div class="col-md-8">
+      <textarea class="form-control" name="message" id="message" rows="7"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="offset-md-2 col-md-8 p-1">
+      <button class="btn btn-primary" type="submit">
+        <i class="far fa-envelope fa-sm"></i> Send
+      </button>
+    </div>
+  </div>
+</form>

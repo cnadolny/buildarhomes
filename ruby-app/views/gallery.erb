@@ -1,0 +1,12 @@
+<div class="pb-2 mt-2 mb-4 border-bottom">
+  <% @galleries.each do |gallery| %>
+    <% next if gallery[:files].empty? %>
+    <hr>
+    <h3 class="example-hr"><%= gallery[:name] %></h3>
+    <hr>
+    <% gallery[:files].each do |file| %>
+      <img class="example-image" src="/images/<%= gallery[:folder] %>/<%= encode_filename(file) %>">
+    <% end %>
+    <br>
+  <% end %>
+</div>
