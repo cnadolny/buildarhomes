@@ -128,15 +128,9 @@ if (process.env.NODE_ENV === 'development') {
 /**
  * Start Express server.
  */
-if (typeof PhusionPassenger !== 'undefined') {
-  // Under Passenger (cPanel/Apache) — Passenger drives the server via Unix socket
-  PhusionPassenger.configure({ autoInstall: false });
-} else {
-  const port = app.get('port');
-  app.listen(port, () => {
-    console.log('App is running at http://localhost:' + port);
-  });
-}
+app.listen(app.get('port'), () => {
+  console.log('App is running at http://localhost:' + app.get('port'));
+});
 
 module.exports = app;
 // module.exports.handler = serverless(app);
